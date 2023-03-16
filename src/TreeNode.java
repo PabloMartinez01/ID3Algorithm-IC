@@ -30,16 +30,8 @@ public class TreeNode {
 	}
 	
 	private void dfs(TreeNode node, int level) {
-		
-		String space = "";
-		for (int i = 0 ; i < level; i++) {
-			space += "      ";
-		}
-		
-		String lines = "-";
-		for (int i = 0; i < node.getValue().length(); i++)
-			lines += "-";
-	
+			
+		String space = new String(new char[5 * level]).replace('\0', ' ');
 		System.out.println(space + node.value);
 
 		for (TreeNode t : node.children)
