@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import javafx.util.Pair;
 
 public class TreeNode {
 	
@@ -93,7 +92,7 @@ public class TreeNode {
 		}
 		
 		
-		Pair<Integer, ArrayList<String>> res = ID3.getBestColumn(matriz);
+		Pair<Integer> res = ID3.getBestColumn(matriz);
 		
 		Integer col = res.getKey();
 		ArrayList<String> opciones = res.getValue();

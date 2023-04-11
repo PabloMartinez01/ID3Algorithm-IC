@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.util.Pair;
 
 public class ID3 {
 	
@@ -55,7 +54,7 @@ public class ID3 {
 	}
 	
 
-	public static Pair<Integer, ArrayList<String>> getBestColumn(ArrayList<ArrayList<String>> table) {
+	public static Pair<Integer> getBestColumn(ArrayList<ArrayList<String>> table) {
 		
 		ArrayList<String> jugar = getColumn(table, table.get(0).size() - 1);
 		
@@ -68,7 +67,7 @@ public class ID3 {
 			
 			ArrayList<String> col = getColumn(table, i);
 			
-			Pair<Double, ArrayList<String>> res = id3Column(col, jugar);
+			Pair<Double> res = id3Column(col, jugar);
 			
 			if (res.getKey() < mejorRes) {
 				mejorRes = res.getKey();
@@ -80,14 +79,14 @@ public class ID3 {
 		
 		
 		
-		return new Pair<Integer, ArrayList<String>> (mejorPos, opciones);
+		return new Pair<Integer> (mejorPos, opciones);
 		
 		
 	}
 	
 
 	
-	public static Pair<Double, ArrayList<String>> id3Column(ArrayList<String> col, ArrayList<String> jugar) {
+	public static Pair<Double> id3Column(ArrayList<String> col, ArrayList<String> jugar) {
 		
 		HashMap<String, Integer> a = new HashMap<String, Integer>();
 		HashMap<String, Integer> pn = new HashMap<String, Integer>();
@@ -130,7 +129,7 @@ public class ID3 {
 		
 		
 		
-		return new Pair<Double, ArrayList<String>>(resultado, opciones);
+		return new Pair<Double>(resultado, opciones);
 		
 	}
 
