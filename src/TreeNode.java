@@ -35,6 +35,10 @@ public class TreeNode {
 		return this.value;
 	}
 	
+	public String getEdge() {
+		return this.edge;
+	}
+	
 	public  ArrayList<ArrayList<String>> getMatriz(){
 		return this.matriz;
 	}
@@ -122,7 +126,32 @@ public class TreeNode {
 		
 	}
 	
-	
+	public void calculate(ArrayList<String> data, ArrayList<String> header) {
+		
+		if (this.children.isEmpty()) {
+			System.out.print(data + " : ");
+			System.out.println(this.value);
+		}
+		else {
+			
+			int pos = header.indexOf(value);
+			String opt = data.get(pos);
+			
+			
+			for (TreeNode child : this.children) {
+				
+				if (child.getEdge().equals(opt)) {
+					child.calculate(data, header);
+				}
+				
+			}
+			
+		}
+		
+		
+		
+		
+	}
 	
 	
 

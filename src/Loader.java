@@ -3,22 +3,13 @@ import java.util.Arrays;
 
 
 public class Loader {
-	
-	private static ArrayList<String> header;
 
 	public Loader() {
 		
 	}
 	
-	public static ArrayList<String> getHeader(){
-		return header;
-	}
-	
 	public static ArrayList<String> loadHeader(){
-		if (header == null)
-			header = (ArrayList<String>) (Arrays.asList("TiempoExterior,Temperatura,Humedad,Viento,Jugar".split(",")));
-		return header;
-			
+		return new ArrayList<String> (Arrays.asList("TiempoExterior,Temperatura,Humedad,Viento,Jugar".split(",")));
 	}
 	
 	public static ArrayList<ArrayList<String>> loadData(){
