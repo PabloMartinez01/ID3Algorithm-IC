@@ -74,12 +74,8 @@ public class TreeNode {
 		int size = matriz.get(0).size();
 		
 		for (int i = 0; i < matriz.size(); i++) {
-			if (matriz.get(i).get(size - 1).equals("si")) {
-				esSi++;
-			}
-			else {
-				esNo++;
-			}
+			if (matriz.get(i).get(size - 1).equals("si")) esSi++;
+			else esNo++;	
 		}
 		
 		if (esSi == 0) {
@@ -95,9 +91,8 @@ public class TreeNode {
 		Pair<Integer> res = ID3.getBestColumn(matriz);
 		
 		Integer col = res.getKey();
+		
 		ArrayList<String> opciones = res.getValue();
-		
-		
 		ArrayList<String> newHeader = new ArrayList<String>();
 		
 		int i = 0;
