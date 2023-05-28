@@ -68,23 +68,20 @@ public class TreeNode {
 			return;
 		}
 		
-		int esSi = 0;
-		int esNo = 0;
 		
+		int esSi = 0;	
 		int size = matriz.get(0).size();
 		
-		for (int i = 0; i < matriz.size(); i++) {
-			if (matriz.get(i).get(size - 1).equals("si")) esSi++;
-			else esNo++;	
+		for (ArrayList<String> v : matriz) {
+			if (v.get(size - 1).equals("si"))
+				esSi++;
 		}
 		
 		if (esSi == 0) {
-			this.value = "no";
-			return;
+			this.value = "no"; return;
 		}
-		else if (esNo == 0) {
-			this.value = "si";
-			return;
+		else if (esSi == matriz.size()) {
+			this.value = "si"; return;
 		}
 		
 		
@@ -93,18 +90,13 @@ public class TreeNode {
 		Integer col = res.getKey();
 		
 		ArrayList<String> opciones = res.getValue();
-		ArrayList<String> newHeader = new ArrayList<String>();
+		ArrayList<String> newHeader = new ArrayList<String>(this.header);
 		
-		int i = 0;
-		for (String s : this.header) {
-			if (i != col)
-				newHeader.add(s);
-			i++;
-		}
+		newHeader.remove(col.intValue());
+		
 		
 		this.value = this.header.get(col);
 		
-	
 		
 		for (String opcion : opciones) {
 			ArrayList<ArrayList<String>> subMatriz = ID3.subMatriz(matriz, col, opcion);
@@ -112,9 +104,9 @@ public class TreeNode {
 			
 		}
 		
-		for (TreeNode child : this.children) {
+		for (TreeNode child : this.children)
 			child.id3();
-		}
+		
 		
 		
 		
@@ -122,22 +114,18 @@ public class TreeNode {
 	
 	public void calculate(ArrayList<String> data, ArrayList<String> header) {
 		
-		if (this.children.isEmpty()) {
-			System.out.print(data + " : ");
-			System.out.println(this.value);
-		}
+		if (this.children.isEmpty()) 
+			System.out.print(data + " : " + this.value + "\n");
+			
 		else {
 			
-			int pos = header.indexOf(value);
-			String opt = data.get(pos);
-			
+			String opt = data.get(header.indexOf(value));		
 			
 			for (TreeNode child : this.children) {
 				
-				if (child.getEdge().equals(opt)) {
+				if (child.getEdge().equals(opt)) 
 					child.calculate(data, header);
-				}
-				
+			
 			}
 			
 		}
